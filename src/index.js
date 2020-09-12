@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import { Auth0Provider } from "@auth0/auth0-react";
+
 import thunk from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
 
@@ -38,9 +40,15 @@ sagaMiddleware.run(watchOrder);
 
 const app = (
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Auth0Provider
+      domain="burger-builder.us.auth0.com"
+      clientId="qfPUmdb9MC0pDoUk56Sn7sWhOZ0O5nCN"
+      redirectUri={window.location.origin}
+    >
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Auth0Provider>
   </Provider>
 );
 ReactDOM.render(app, document.getElementById("root"));
