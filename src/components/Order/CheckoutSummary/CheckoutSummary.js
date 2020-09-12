@@ -1,7 +1,7 @@
 import React from "react";
 import Burger from "../../Burger/Burger";
-import Button from "../../UI/Button/Button";
 import classes from "./CheckoutSummary.module.css";
+import { Button } from "react-bootstrap";
 
 const checkoutSummary = (props) => {
   return (
@@ -10,10 +10,18 @@ const checkoutSummary = (props) => {
       <div style={{ width: "100%", margin: "auto" }}>
         <Burger ingredients={props.ingredients} />
       </div>
-      <Button btnType="Danger" clicked={props.checkoutCancelled}>
+      <Button
+        className={classes.Button}
+        variant="outline-danger"
+        onClick={props.checkoutCancelled}
+      >
         CANCEL
       </Button>
-      <Button btnType="Success" clicked={props.checkoutContinued}>
+      <Button
+        className={classes.Button}
+        variant="outline-success"
+        onClick={props.checkoutContinued}
+      >
         CONTINUE
       </Button>
     </div>

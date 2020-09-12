@@ -6,7 +6,7 @@ import Aux from "../../hoc/Aux/Aux";
 
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
-import Modal from "../../components/UI/Modal/Modal";
+import ModalComponent from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import * as actions from "../../store/actions/index";
@@ -91,21 +91,19 @@ export const BurgerBuilder = (props) => {
         />
       </Aux>
     );
-    orderSummary = (
-      <OrderSummary
-        ingredients={ings}
-        price={price}
-        purchaseCancelled={purchaseCancelHandler}
-        purchaseContinued={purchaseContinueHandler}
-      />
-    );
+    orderSummary = <OrderSummary ingredients={ings} price={price} />;
   }
 
   return (
     <Aux>
-      <Modal show={purchasing} modalClosed={purchaseCancelHandler}>
+      <ModalComponent
+        show={purchasing}
+        modalClosed={purchaseCancelHandler}
+        purchaseCancelled={purchaseCancelHandler}
+        purchaseContinued={purchaseContinueHandler}
+      >
         {orderSummary}
-      </Modal>
+      </ModalComponent>
       {burger}
     </Aux>
   );
