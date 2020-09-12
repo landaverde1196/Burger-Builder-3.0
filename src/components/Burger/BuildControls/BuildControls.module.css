@@ -10,7 +10,7 @@
 }
 
 .OrderButton {
-  background-color: #dad735;
+  background: #dad735;
   outline: none;
   cursor: pointer;
   border: 1px solid #966909;

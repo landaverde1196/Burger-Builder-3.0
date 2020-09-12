@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./BuildControls.module.css";
 import BuildControl from "./BuildControl/BuildControl";
+import { Button } from "react-bootstrap";
 
 const controls = [
   { label: "Salad", type: "salad" },
@@ -23,13 +24,15 @@ const buildControls = (props) => (
         disabled={props.disabled[ctrl.type]}
       />
     ))}
-    <button
+    <Button
       className={classes.OrderButton}
-      disabled={!props.purchasable}
+      variant="success"
+      size="lg"
       onClick={props.ordered}
+      disabled={!props.purchasable}
     >
       {props.isAuth ? "ORDER NOW" : "SIGN UP TO ORDER"}
-    </button>
+    </Button>
   </div>
 );
 
