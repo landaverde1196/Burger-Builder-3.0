@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Input.module.css";
 
+import { Form } from "react-bootstrap";
+
 const input = (props) => {
   let inputElement = null;
   const inputClasses = [classes.InputElement];
@@ -12,11 +14,13 @@ const input = (props) => {
   switch (props.elementType) {
     case "input":
       inputElement = (
-        <input
-          className={inputClasses.join(" ")}
-          {...props.elementConfig}
-          value={props.value}
+        <Form.Control
+          type="email"
+          placeholder="Enter email"
           onChange={props.changed}
+          value={props.value}
+          {...props.elementConfig}
+          className={inputClasses.join(" ")}
         />
       );
       break;
@@ -47,11 +51,13 @@ const input = (props) => {
       break;
     default:
       inputElement = (
-        <input
-          className={inputClasses}
-          {...props.elementConfig}
-          value={props.value}
+        <Form.Control
+          type="email"
+          placeholder="Enter email"
           onChange={props.changed}
+          value={props.value}
+          {...props.elementConfig}
+          className={inputClasses.join(" ")}
         />
       );
   }

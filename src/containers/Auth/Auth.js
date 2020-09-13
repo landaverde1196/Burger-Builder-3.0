@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import Input from "../../components/UI/Input/Input";
-import Button from "../../components/UI/Button/Button";
+import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Auth.module.css";
 import * as actions from "../../store/actions/index";
@@ -114,13 +115,15 @@ const Auth = (props) => {
     <div className={classes.Auth}>
       {authRedirect}
       {errorMessage}
-      <form onSubmit={submitHandler}>
+      <Form onSubmit={submitHandler}>
         {form}
-        <Button btnType="Success">SUBMIT</Button>
-      </form>
-      <Button clicked={switchAuthModeHandler} btnType="Danger">
-        SWITCH TO {isSignup ? "SIGNIN" : "SIGNUP"}
-      </Button>
+        <Button variant="outline-success" type="submit">
+          Submit
+        </Button>
+        <Button onClick={switchAuthModeHandler} variant="outline-danger">
+          SWITCH TO {isSignup ? "SIGNIN" : "SIGNUP"}
+        </Button>
+      </Form>
     </div>
   );
 };
