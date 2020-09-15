@@ -17,9 +17,10 @@ import { watchAuth, watchBurgerBuilder, watchOrder } from "./store/sagas/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const composeEnhancers =
-  process.env.NODE_ENV === "development"
+  process.env.NODE_ENV === "development" &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null || compose;
+    : compose;
 
 const rootReducer = combineReducers({
   burgerBuilder: burgerBuilderReducer,
