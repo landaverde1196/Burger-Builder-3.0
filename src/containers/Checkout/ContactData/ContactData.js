@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import Button from "../../../components/UI/Button/Button";
+// import Button from "../../../components/UI/Button/Button";
+import { Button } from "react-bootstrap";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import classes from "./ContactData.module.css";
 import axios from "../../../axios-orders";
@@ -160,7 +161,7 @@ const ContactData = (props) => {
           changed={(event) => inputChangedHandler(event, formElement.id)}
         />
       ))}
-      <Button btnType="Success" disabled={!formIsValid}>
+      <Button variant="outline-success" type="submit" disabled={!formIsValid}>
         ORDER
       </Button>
     </form>

@@ -14,14 +14,17 @@ const input = (props) => {
   switch (props.elementType) {
     case "input":
       inputElement = (
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          onChange={props.changed}
-          value={props.value}
-          {...props.elementConfig}
-          className={inputClasses.join(" ")}
-        />
+        <>
+          <Form.Label>{props.elementConfig.placeholder}</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            onChange={props.changed}
+            value={props.value}
+            {...props.elementConfig}
+            className={inputClasses.join(" ")}
+          />
+        </>
       );
       break;
     case "textarea":
@@ -36,7 +39,8 @@ const input = (props) => {
       break;
     case "select":
       inputElement = (
-        <select
+        <Form.Control
+          as="select"
           className={classes.InputElement}
           value={props.value}
           onChange={props.changed}
@@ -46,19 +50,22 @@ const input = (props) => {
               {option.displayValue}
             </option>
           ))}
-        </select>
+        </Form.Control>
       );
       break;
     default:
       inputElement = (
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          onChange={props.changed}
-          value={props.value}
-          {...props.elementConfig}
-          className={inputClasses.join(" ")}
-        />
+        <>
+          <Form.Label>{props.elementConfig.placeholder}</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            onChange={props.changed}
+            value={props.value}
+            {...props.elementConfig}
+            className={inputClasses.join(" ")}
+          />
+        </>
       );
   }
 
