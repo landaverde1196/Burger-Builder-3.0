@@ -1,8 +1,5 @@
 import React from "react";
 import classes from "./Toolbar.module.css";
-// import Logo from "../../Logo/Logo";
-// import NavigationItems from "../NavigationItems/NavigationItems";
-// import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import burgerLogo from "../../../assets/images/original.png";
 
@@ -31,11 +28,13 @@ const toolbar = (props) => (
             <Nav.Link href="/" exact="true">
               Burger Builder
             </Nav.Link>
-            {props.isAuth ? <Nav.Link href="/orders">Orders</Nav.Link> : null}
-            {!props.isAuth ? (
-              <Nav.Link href="/auth">Authenticate</Nav.Link>
+            {props.isAuth ? (
+              <>
+                <Nav.Link href="/orders">Orders</Nav.Link>
+                <Nav.Link href="/logout">Logout</Nav.Link>
+              </>
             ) : (
-              <Nav.Link href="/logout">Logout</Nav.Link>
+              <Nav.Link href="/auth">Authenticate</Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

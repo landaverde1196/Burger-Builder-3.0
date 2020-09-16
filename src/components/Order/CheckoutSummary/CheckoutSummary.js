@@ -1,5 +1,5 @@
 import React from "react";
-import Burger from "../../Burger/Burger";
+import Burger from "../../Burger";
 import classes from "./CheckoutSummary.module.css";
 import { Button } from "react-bootstrap";
 

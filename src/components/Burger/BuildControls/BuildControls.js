@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./BuildControls.module.css";
-import BuildControl from "./BuildControl/BuildControl";
+import BuildControl from "./BuildControl";
 import { Button } from "react-bootstrap";
 
 const controls = [

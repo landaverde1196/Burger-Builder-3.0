@@ -4,30 +4,12 @@ import { connect } from "react-redux";
 import Aux from "../Aux/Aux";
 import classes from "./Layout.module.css";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
-import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 
 const Layout = (props) => {
-  const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
-
-  const sideDrawerClosedHandler = () => {
-    setSideDrawerIsVisible(false);
-  };
-
-  const sideDrawerToggleHandler = () => {
-    setSideDrawerIsVisible(!sideDrawerIsVisible);
-  };
-
   return (
     <Aux>
-      <Toolbar
-        isAuth={props.isAuthenticated}
-        drawerToggleClicked={sideDrawerToggleHandler}
-      />
-      <SideDrawer
-        isAuth={props.isAuthenticated}
-        open={sideDrawerIsVisible}
-        closed={sideDrawerClosedHandler}
-      />
+      <Toolbar isAuth={props.isAuthenticated} />
+
       <main className={classes.Content}>{props.children}</main>
     </Aux>
   );
