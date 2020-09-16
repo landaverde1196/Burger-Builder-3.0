@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Layout from "./hoc/Layout/Layout";
 import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
 import Logout from "./containers/Auth/Logout/Logout";
-import * as actions from "./store/actions/index";
+import { authCheckState } from "./store/actions/index";
+import { checkIsAuthenticated } from "./selectors";
 
 const Checkout = React.lazy(() => {
   return import("./containers/Checkout/Checkout");
@@ -22,35 +23,30 @@ const Auth = React.lazy(() => {
 const App = (props) => {
   const dispatch = useDispatch();
 
-  const isAuthenticated = useSelector((state) => state.auth.token !== null);
+  const isAuthenticated = useSelector(checkIsAuthenticated);
 
-  const onTryAutoSignup = useCallback(
-    () => dispatch(actions.authCheckState()),
-    [dispatch]
-  );
+  const onTryAutoSignup = useCallback(() => dispatch(authCheckState()), [
+    dispatch,
+  ]);
 
   useEffect(() => {
     onTryAutoSignup();
   }, [onTryAutoSignup]);
 
-  let routes = (
+  const routes = (
     <Switch>
       <Route path="/auth" render={(props) => <Auth {...props} />} />
       <Route path="/" exact component={BurgerBuilder} />
+
+      {isAuthenticated && (
+        <>
+          <Route path="/checkout" render={(props) => <Checkout {...props} />} />
+          <Route path="/orders" render={(props) => <Orders {...props} />} />
+          <Route path="/logout" component={Logout} />
+        </>
+      )}
     </Switch>
   );
-
-  if (isAuthenticated) {
-    routes = (
-      <Switch>
-        <Route path="/checkout" render={(props) => <Checkout {...props} />} />
-        <Route path="/orders" render={(props) => <Orders {...props} />} />
-        <Route path="/logout" component={Logout} />
-        <Route path="/auth" render={(props) => <Auth {...props} />} />
-        <Route path="/" exact component={BurgerBuilder} />
-      </Switch>
-    );
-  }
 
   return (
     <div>
