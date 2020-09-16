@@ -7,7 +7,7 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import Spinner from "../../components/UI/Spinner";
 import classes from "./Auth.module.css";
-import * as actions from "../../store/actions/index";
+import { auth, setAuthRedirectPath } from "../../store/actions";
 import { updateObject, checkValidity } from "../../shared/utility";
 
 const Auth = (props) => {
@@ -141,8 +141,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAuth: (email, password, isSignup) =>
-      dispatch(actions.auth(email, password, isSignup)),
-    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath("/")),
+      dispatch(auth(email, password, isSignup)),
+    onSetAuthRedirectPath: () => dispatch(setAuthRedirectPath("/")),
   };
 };
 

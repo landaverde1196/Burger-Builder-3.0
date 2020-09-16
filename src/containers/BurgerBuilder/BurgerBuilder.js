@@ -8,7 +8,13 @@ import BuildControls from "../../components/Burger/BuildControls";
 import ModalComponent from "../../components/UI/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary";
 import Spinner from "../../components/UI/Spinner";
-import * as actions from "../../store/actions/index";
+import {
+  addIngredient,
+  removeIngredient,
+  initIngredients,
+  purchaseInit,
+  setAuthRedirectPath,
+} from "../../store/actions";
 
 export const BurgerBuilder = (props) => {
   const [purchasing, setPurchasing] = useState(false);
@@ -20,17 +26,13 @@ export const BurgerBuilder = (props) => {
   const error = useSelector((state) => state.burgerBuilder.error);
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
 
-  const onIngredientAdded = (ingName) =>
-    dispatch(actions.addIngredient(ingName));
-  const onIngredientRemoved = (ingName) =>
-    dispatch(actions.removeIngredient(ingName));
-  const onInitIngredients = useCallback(
-    () => dispatch(actions.initIngredients()),
-    [dispatch]
-  );
-  const onInitPurchase = () => dispatch(actions.purchaseInit());
-  const onSetAuthRedirectPath = (path) =>
-    dispatch(actions.setAuthRedirectPath(path));
+  const onIngredientAdded = (ingName) => dispatch(addIngredient(ingName));
+  const onIngredientRemoved = (ingName) => dispatch(removeIngredient(ingName));
+  const onInitIngredients = useCallback(() => dispatch(initIngredients()), [
+    dispatch,
+  ]);
+  const onInitPurchase = () => dispatch(purchaseInit());
+  const onSetAuthRedirectPath = (path) => dispatch(setAuthRedirectPath(path));
 
   useEffect(() => {
     onInitIngredients();

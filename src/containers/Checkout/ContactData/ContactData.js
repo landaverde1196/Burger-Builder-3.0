@@ -8,7 +8,7 @@ import classes from "./ContactData.module.css";
 import axios from "../../../axios-orders";
 import Input from "../../../components/UI/Input";
 import withErrorHandler from "../../../hoc/withErrorHandler";
-import * as actions from "../../../store/actions/index";
+import { purchaseBurger } from "../../../store/actions";
 import { updateObject, checkValidity } from "../../../shared/utility";
 
 const ContactData = (props) => {
@@ -190,7 +190,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onOrderBurger: (orderData, token) =>
-      dispatch(actions.purchaseBurger(orderData, token)),
+      dispatch(purchaseBurger(orderData, token)),
   };
 };
 
