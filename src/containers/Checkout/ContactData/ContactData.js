@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 // import Button from "../../../components/UI/Button/Button";
 import { Button } from "react-bootstrap";
-import Spinner from "../../../components/UI/Spinner/Spinner";
+import Spinner from "../../../components/UI/Spinner";
 import classes from "./ContactData.module.css";
 import axios from "../../../axios-orders";
-import Input from "../../../components/UI/Input/Input";
+import Input from "../../../components/UI/Input";
 import withErrorHandler from "../../../hoc/withErrorHandler";
 import * as actions from "../../../store/actions/index";
 import { updateObject, checkValidity } from "../../../shared/utility";

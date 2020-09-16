@@ -1,5 +1,4 @@
 import React from "react";
-import Aux from "../../../hoc/Aux/Aux";
 
 const OrderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients).map((igKey) => {
@@ -12,14 +11,14 @@ const OrderSummary = (props) => {
   });
 
   return (
-    <Aux>
+    <>
       <p>A delicious burger with the following ingredients:</p>
       <ul>{ingredientSummary}</ul>
       <p>
         <strong>Total Price: {props.price.toFixed(2)}</strong>
       </p>
       <p>Continue to Checkout?</p>
-    </Aux>
+    </>
   );
 };
 

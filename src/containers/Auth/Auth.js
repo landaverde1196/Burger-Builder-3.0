@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import Input from "../../components/UI/Input/Input";
+import Input from "../../components/UI/Input";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import Spinner from "../../components/UI/Spinner/Spinner";
+import Spinner from "../../components/UI/Spinner";
 import classes from "./Auth.module.css";
 import * as actions from "../../store/actions/index";
 import { updateObject, checkValidity } from "../../shared/utility";

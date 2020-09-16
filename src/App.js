@@ -2,9 +2,9 @@ import React, { useEffect, useCallback, Suspense } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import Layout from "./hoc/Layout/Layout";
-import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
-import Logout from "./containers/Auth/Logout/Logout";
+import Layout from "./hoc/Layout";
+import BurgerBuilder from "./containers/BurgerBuilder";
+import Logout from "./containers/Auth/Logout";
 import { authCheckState } from "./store/actions/index";
 import { checkIsAuthenticated } from "./selectors";
 

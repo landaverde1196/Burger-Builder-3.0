@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../../axios-orders";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
-import Aux from "../../hoc/Aux/Aux";
+import withErrorHandler from "../../hoc/withErrorHandler";
 
 import Burger from "../../components/Burger";
 import BuildControls from "../../components/Burger/BuildControls";
-import ModalComponent from "../../components/UI/Modal/Modal";
-import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
-import Spinner from "../../components/UI/Spinner/Spinner";
+import ModalComponent from "../../components/UI/Modal";
+import OrderSummary from "../../components/Burger/OrderSummary";
+import Spinner from "../../components/UI/Spinner";
 import * as actions from "../../store/actions/index";
 
 export const BurgerBuilder = (props) => {
@@ -78,7 +77,7 @@ export const BurgerBuilder = (props) => {
 
   if (ings) {
     burger = (
-      <Aux>
+      <>
         <Burger ingredients={ings} />
         <BuildControls
           ingredientAdded={onIngredientAdded}
@@ -89,13 +88,13 @@ export const BurgerBuilder = (props) => {
           isAuth={isAuthenticated}
           price={price}
         />
-      </Aux>
+      </>
     );
     orderSummary = <OrderSummary ingredients={ings} price={price} />;
   }
 
   return (
-    <Aux>
+    <>
       <ModalComponent
         show={purchasing}
         modalClosed={purchaseCancelHandler}
@@ -105,7 +104,7 @@ export const BurgerBuilder = (props) => {
         {orderSummary}
       </ModalComponent>
       {burger}
-    </Aux>
+    </>
   );
 };
 
