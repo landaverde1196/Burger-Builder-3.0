@@ -1,13 +1,19 @@
 const path = require("path");
 
-let express = require("express");
-let app = express();
-app.use(express.static(__dirname + "/"));
-app.listen(process.env.PORT || 3000);
+const express = require("express");
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join("build", "index.html"));
-  });
-}
+const app = express();
+
+const publicPath = path.join(__dirname, "..", "public");
+
+const port = process.env.PORT || 3000;
+
+app.use(express.static(publicPath));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"));
+});
+
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}!`);
+});
